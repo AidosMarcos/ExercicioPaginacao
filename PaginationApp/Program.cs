@@ -27,7 +27,7 @@ namespace PaginationApp
 
             var paginas = new List<int>();
 
-            //verificar se a currentPage é maior que 0 e menor ou igual que totalPages
+            //verificar se a currentPage é maior que 0 e menor ou igual que totalPages, boundaries e around sejam positivos
             if (currentPage > 0 && currentPage <= totalPages || boundaries < 0 && around < 0)
             {
                 paginas.Add(currentPage);
