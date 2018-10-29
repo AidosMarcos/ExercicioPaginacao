@@ -12,3 +12,5 @@ Está definido como StartUp Project.
  - https://www.microsoft.com/net/download
 
 Visto que ultimamente tenho estado a trabalhar na maioria do tempo em .Net Core com Razor Pages, então decidi criar também uma pequena WebApp que usa a mesma class, recebe o input do utilizador e cria apresenta o resultado na pagina.
+
+Disponivel online: https://paginationexample.azurewebsites.net/
