@@ -226,7 +226,7 @@ namespace UnitTestPaginationApp
 
             string metodo = Program.Paginaçao(currentPage, totalPages, boundaries, around);
 
-            string resultadoEsperado = "... 8 ...";
+            string resultadoEsperado = "Dados inseridos não podem ser usados.";
 
             Assert.AreEqual(resultadoEsperado, metodo);
         }
