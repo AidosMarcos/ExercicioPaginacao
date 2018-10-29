@@ -3,6 +3,7 @@
 Exercicio resolvido e a usar testes unitarios.
 
 Teste base em Console Application .Net Framework 4.6.1
+Está definido como StartUp Project.
  
 # Exercicio Paginação .Net Core 2.1
 
