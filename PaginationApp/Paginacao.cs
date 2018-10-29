@@ -19,7 +19,7 @@ namespace PaginationApp
 		/// <param name="around">Quantidade de paginas a mostrar a volta da currentPage</param>
 		public string Paginar(int currentPage, int totalPages, int boundaries, int around)
 		{
-			string resultado = "";
+			var resultado = string.Empty;
 
 			var paginas = new List<int>();
 
@@ -104,7 +104,7 @@ namespace PaginationApp
 			}
 			else
 			{
-				resultado = "Dados inseridos não podem ser usados.";
+				resultado = ResultadoInvalido;
 			}
 
 			return resultado;
