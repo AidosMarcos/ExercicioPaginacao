@@ -35,3 +35,11 @@ body {
         display: none;
     }
 }
+
+.mt-4 {
+	margin-top:10px;
+}
+
+.currentPage {
+	font-size: 15px;
+}

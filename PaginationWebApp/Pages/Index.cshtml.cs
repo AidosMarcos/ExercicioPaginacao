@@ -38,7 +38,6 @@ namespace PaginationWebApp.Pages
 			{
 				PaginasVM.ResultadoArray = null;
 			}
-
 		}
 	}
 }

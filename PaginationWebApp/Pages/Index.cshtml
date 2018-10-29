@@ -18,21 +18,26 @@
             <div class="form-group">
                 <label>Página atual(Current Page):</label>
                 <input asp-for="@Model.PaginasVM.CurrentPage" class="form-control" type="number" name="currentPage" required />
+                <span asp-validation-for="@Model.PaginasVM.CurrentPage"></span>
             </div>
             <div class="form-group">
                 <label>Total de páginas(Total pages):</label>
                 <input asp-for="@Model.PaginasVM.TotalPages" class="form-control" type="number" name="totalPages" required />
+                <span asp-validation-for="@Model.PaginasVM.TotalPages"></span>
             </div>
             <div class="form-group">
                 <label>Limites(Boundaries):</label>
                 <input asp-for="@Model.PaginasVM.Boundaries" class="form-control" type="number" name="boundaries" required />
+                <span asp-validation-for="@Model.PaginasVM.Boundaries"></span>
             </div>
             <div class="form-group">
                 <label>A volta(Around):</label>
                 <input asp-for="@Model.PaginasVM.Around" class="form-control" type="number" name="around" required />
+                <span asp-validation-for="@Model.PaginasVM.Around"></span>
             </div>
-            <button class="btn btn-default" type="submit">Submeter</button>
-            
+            <div asp-validation-summary="ModelOnly"></div>
+            <button class="btn btn-primary" type="submit">Submeter</button>
+
         </form>
     </div>
     <div class="col-md-12 text-center">
@@ -47,7 +52,14 @@
                 @foreach (var item in Model.PaginasVM.ResultadoArray)
                 {
                     <li class="page-item">
-                        <a class="page-link" href="#">@item</a>
+                        @if (string.Equals(item, Model.PaginasVM.CurrentPage.ToString(), StringComparison.OrdinalIgnoreCase))
+	                    {
+                            <a class="page-link currentPage" href="#"><strong>@item</strong></a>
+                        }
+                        else
+                        {
+                            <a class="page-link" href="#">@item</a>
+	                    }   
                     </li>
                 }
                 <li class="page-item">
@@ -59,7 +71,9 @@
         }
         else
         {
-            <p>Impossivel apresentar paginas com os dados inseridos</p>
+            <div class="mt-4 col-md-12 alert-danger">
+                <p>Impossivel apresentar paginas com os dados inseridos.</p>
+            </div>
         }
     </div>
 </div>
