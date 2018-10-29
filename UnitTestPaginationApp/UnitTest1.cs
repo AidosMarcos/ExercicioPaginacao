@@ -1,10 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PaginationApp;
+using PaginacaoNetStandard;
 
 namespace UnitTestPaginationApp
 {
-    [TestClass]
+	[TestClass]
     public class UnitTest1
     {
         [TestMethod]
@@ -15,9 +15,9 @@ namespace UnitTestPaginationApp
             int boundaries = 0;
             int around = 0;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = Paginacao.ResultadoInvalido;
+			var resultadoEsperadoEsperado = PaginacaoStandard.ResultadoInvalido;
 
             Assert.AreEqual(resultadoEsperadoEsperado, metodo);
         }
@@ -30,11 +30,11 @@ namespace UnitTestPaginationApp
             int boundaries = 2;
             int around = 2;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = "1";
+			var resultadoEsperado = "1";
 
-            Assert.AreEqual(resultadoEsperadoEsperado, metodo);
+            Assert.AreEqual(resultadoEsperado, metodo);
         }
 
         [TestMethod]
@@ -45,11 +45,11 @@ namespace UnitTestPaginationApp
             int boundaries = 3;
             int around = 0;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = "1 2 3 ... 5 ... 8 9 10";
+			var resultadoEsperado = "1 2 3 ... 5 ... 8 9 10";
 
-            Assert.AreEqual(resultadoEsperadoEsperado, metodo);
+            Assert.AreEqual(resultadoEsperado, metodo);
         }
 
         [TestMethod]
@@ -60,11 +60,11 @@ namespace UnitTestPaginationApp
             int boundaries = 0;
             int around = 0;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = Paginacao.ResultadoInvalido;
+			var resultadoEsperado = PaginacaoStandard.ResultadoInvalido;
 
-            Assert.AreEqual(resultadoEsperadoEsperado, metodo);
+            Assert.AreEqual(resultadoEsperado, metodo);
         }
 
         [TestMethod]
@@ -75,11 +75,11 @@ namespace UnitTestPaginationApp
             int boundaries = 20;
             int around = 20;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = "1 2 3 4 5 6 7 8 9 10";
+			var resultadoEsperado = "1 2 3 4 5 6 7 8 9 10";
 
-            Assert.AreEqual(resultadoEsperadoEsperado, metodo);
+            Assert.AreEqual(resultadoEsperado, metodo);
         }
 
         [TestMethod]
@@ -90,11 +90,11 @@ namespace UnitTestPaginationApp
             int boundaries = 3;
             int around = 2;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = "1 2 3 ... 8 9 10";
+			var resultadoEsperado = "1 2 3 ... 8 9 10";
 
-            Assert.AreEqual(resultadoEsperadoEsperado, metodo);
+            Assert.AreEqual(resultadoEsperado, metodo);
         }
 
         [TestMethod]
@@ -105,11 +105,11 @@ namespace UnitTestPaginationApp
             int boundaries = 0;
             int around = 0;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = "... 10";
+			var resultadoEsperado = "... 10";
 
-            Assert.AreEqual(resultadoEsperadoEsperado, metodo);
+            Assert.AreEqual(resultadoEsperado, metodo);
         }
 
         [TestMethod]
@@ -120,11 +120,11 @@ namespace UnitTestPaginationApp
             int boundaries = 0;
             int around = 4;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = "... 6 7 8 9 10";
+			var resultadoEsperado = "... 6 7 8 9 10";
 
-            Assert.AreEqual(resultadoEsperadoEsperado, metodo);
+            Assert.AreEqual(resultadoEsperado, metodo);
         }
 
         [TestMethod]
@@ -135,11 +135,11 @@ namespace UnitTestPaginationApp
             int boundaries = 0;
             int around = 4;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = "1 2 3 4 5 ...";
+			var resultadoEsperado = "1 2 3 4 5 ...";
 
-            Assert.AreEqual(resultadoEsperadoEsperado, metodo);
+            Assert.AreEqual(resultadoEsperado, metodo);
         }
 
         [TestMethod]
@@ -150,11 +150,11 @@ namespace UnitTestPaginationApp
             int boundaries = 5;
             int around = 0;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperadoEsperado = "1 2 3 4 5 ... 8 ... 16 17 18 19 20";
+			var resultadoEsperado = "1 2 3 4 5 ... 8 ... 16 17 18 19 20";
 
-            Assert.AreEqual(resultadoEsperadoEsperado, metodo);
+            Assert.AreEqual(resultadoEsperado, metodo);
         }
 
         [TestMethod]
@@ -165,9 +165,9 @@ namespace UnitTestPaginationApp
             int boundaries = 0;
             int around = 0;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-            string resultadoEsperado = "... 5 ...";
+            var resultadoEsperado = "... 5 ...";
 
             Assert.AreEqual(resultadoEsperado, metodo);
         }
@@ -180,9 +180,9 @@ namespace UnitTestPaginationApp
             int boundaries = 10;
             int around = 10;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperado = "1 2 3 4 5 6 7 8 9 10 ... 9990 9991 9992 9993 9994 9995 9996 9997 9998 9999 10000 10001 10002" +
+			var resultadoEsperado = "1 2 3 4 5 6 7 8 9 10 ... 9990 9991 9992 9993 9994 9995 9996 9997 9998 9999 10000 10001 10002" +
                 " 10003 10004 10005 10006 10007 10008 10009 10010 ... 39991 39992 39993 39994 39995 39996 39997 39998 39999 40000";
 
             Assert.AreEqual(resultadoEsperado, metodo);
@@ -196,9 +196,9 @@ namespace UnitTestPaginationApp
             int boundaries = 1;
             int around = 0;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperado = "1 ... 100000 ... 2147483647";
+			var resultadoEsperado = "1 ... 100000 ... 2147483647";
 
             Assert.AreEqual(resultadoEsperado, metodo);
         }
@@ -211,9 +211,9 @@ namespace UnitTestPaginationApp
             int boundaries = -1;
             int around = -2;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperado = Paginacao.ResultadoInvalido;
+			var resultadoEsperado = PaginacaoStandard.ResultadoInvalido;
 
             Assert.AreEqual(resultadoEsperado, metodo);
         }
@@ -226,9 +226,9 @@ namespace UnitTestPaginationApp
             int boundaries = 3;
             int around = 3;
 
-            string metodo = (new Paginacao()).Paginar(currentPage, totalPages, boundaries, around);
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
 
-			string resultadoEsperado = Paginacao.ResultadoInvalido;
+			var resultadoEsperado = PaginacaoStandard.ResultadoInvalido;
 
             Assert.AreEqual(resultadoEsperado, metodo);
         }

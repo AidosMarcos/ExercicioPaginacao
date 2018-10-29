@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PaginationApp
+namespace PaginacaoNetStandard
 {
-	public class Paginacao
+
+	public class PaginacaoStandard
 	{
 		public const string ResultadoInvalido = "Dados inseridos não podem ser usados.";
 

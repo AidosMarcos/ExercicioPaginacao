@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PaginacaoNetStandard\PaginacaoNetStandard.csproj">
+      <Project>{ac0f8aba-f1b8-46e9-ad44-03f3349b95c9}</Project>
+      <Name>PaginacaoNetStandard</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PaginationApp\PaginationApp.csproj">
       <Project>{59040d33-6c37-44cd-a80d-76a17a2e14ab}</Project>
       <Name>PaginationApp</Name>
