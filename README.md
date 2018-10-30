@@ -1,8 +1,11 @@
 # Exercicio Paginação
 
-Exercicio resolvido e a usar testes unitarios.
+Criei uma classe .Net Standard porque possibilida ser usada em qualquer que seja a .Net framework.
 
 Teste base em Console Application .Net Framework 4.6.1.
+
+Aqui fica link directo para o exercicio resolvido novamente:
+https://github.com/AidosMarcos/ExercicioPaginacao/blob/master/PaginacaoNetStandard/PaginacaoStandard.cs
  
 # Exercicio Paginação .Net Core 2.1
 
