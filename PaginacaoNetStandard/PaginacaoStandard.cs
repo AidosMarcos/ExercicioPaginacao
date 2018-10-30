@@ -39,6 +39,41 @@ namespace PaginacaoNetStandard
 			return resultado;
 		}
 
+		private List<int> ObterListaPaginas(int currentPage, int totalPages, int boundaries, int around)
+		{
+			try
+			{
+				var paginas = new List<int>();
+				//Adicionar a currentpage
+				paginas.Add(currentPage);
+
+				//Adicionar as boundaries iniciais
+				paginas.AddRange(Enumerable.Range(1, boundaries));
+
+				//Adicionar as boundaries finais
+				paginas.AddRange(Enumerable.Range((totalPages - boundaries) + 1, boundaries));
+
+				//Adicionar os valores around antes da currentPage
+				paginas.AddRange(Enumerable.Range(currentPage - around, around));
+
+				//Adicionar os valores around depois da currentPage
+				paginas.AddRange(Enumerable.Range(currentPage + 1, around));
+
+				//Ordenar e selecionar apenas os valores que queremos na nossa lista
+				paginas = paginas.OrderBy(item => item)
+					.Distinct()//Ter a certeza que não repito valores na lista
+					.Where(item => item <= totalPages && item > 0)//apenas aqueles entre 1 e totalpages
+					.ToList();
+
+				return paginas;
+			}
+			catch (Exception)
+			{
+				return null;
+			}
+		}
+
+
 		private string ObterResultadoPaginas(int totalPages, List<int> paginas)
 		{
 			//
@@ -73,38 +108,5 @@ namespace PaginacaoNetStandard
 			}
 		}
 
-		private List<int> ObterListaPaginas(int currentPage, int totalPages, int boundaries, int around)
-		{
-			try
-			{
-				var paginas = new List<int>();
-				//Adicionar a currentpage
-				paginas.Add(currentPage);
-
-				//Adicionar as boundaries iniciais
-				paginas.AddRange(Enumerable.Range(1, boundaries));
-
-				//Adicionar as boundaries finais
-				paginas.AddRange(Enumerable.Range((totalPages - boundaries) + 1, boundaries));
-
-				//Adicionar os valores around antes da currentPage
-				paginas.AddRange(Enumerable.Range(currentPage - around, around));
-
-				//Adicionar os valores around depois da currentPage
-				paginas.AddRange(Enumerable.Range(currentPage + 1, around));
-
-				//Ordenar e selecionar apenas os valores que queremos na nossa lista
-				paginas = paginas.OrderBy(item => item)
-					.Distinct()//Ter a certeza que não repito valores na lista
-					.Where(item => item <= totalPages && item > 0)//apenas aqueles entre 1 e totalpages
-					.ToList();
-
-				return paginas;
-			}
-			catch (Exception)
-			{
-				return null;
-			}
-		}
 	}
 }
