@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace PaginacaoNetStandard
 {
@@ -26,9 +27,9 @@ namespace PaginacaoNetStandard
 			//verificar se a currentPage é maior que 0 e menor ou igual que totalPages
 			if (PaginasValidas && limitesValidos)
 			{
-				var paginas = PaginasLista(currentPage, totalPages, boundaries, around);
+				var paginas = ObterListaPaginas(currentPage, totalPages, boundaries, around);
 
-				resultado = PaginasResultado(totalPages, resultado, paginas);
+				resultado = ObterResultadoPaginas(totalPages, paginas);
 			}
 			else
 			{
@@ -38,40 +39,29 @@ namespace PaginacaoNetStandard
 			return resultado;
 		}
 
-		private string PaginasResultado(int totalPages, string resultado, List<int> paginas)
+		private string ObterResultadoPaginas(int totalPages, List<int> paginas)
 		{
-			var paginaAnterior = 1;
+			//
+			var paginasString = new StringBuilder();
 
-			//Passar a string correctamente para a variavel e adicionar as ...
-			foreach (var pagina in paginas)
-			{
-				//Se a diferença entra a pagina atual e a anterior for maior que 1 significa que exite uma falha na sequencia de numeros então adiciona ...
-				if (pagina - paginaAnterior > 1)
-				{
-					resultado += "... ";
-				}
-				paginaAnterior = pagina;
+			//verificar se o primeiro item na lista de paginas é maior que 1, sim for adicionar ...
+			paginasString.Append(paginas[0] > 1 ? "... " : "");
+			
+			paginasString.Append(string.Concat(paginas.Select((item , index) =>
+										index == 0 ? // se estiver na primeira pagina..
+											$"{item} " :// entao adicionar o item
+											item - paginas[index - 1] > 1 ? // se a diferença entre a pagina atual e a anterior maior que 1
+												$"... {item} " : // adiciona ...
+												$"{item} ") // se nao apenas adiciona o item
+												));
 
-				//Adicionar espaços entre os numeros, menos no ultimo, para facilitar leitura do output
-				if (pagina == paginas.Last())
-				{
-					resultado += pagina;
-					//Em case de ainda haver numeros até totalPages, visto não os querermos mostrar adicionamos ...
-					if (totalPages - pagina > 1)
-					{
-						resultado += " ...";
-					}
-				}
-				else
-				{
-					resultado += pagina + " ";
-				}
-			}
+			//verificar se ultimo item de paginas é menos que totalPages, se for adicionar ...
+			paginasString.Append(paginas.Last() < totalPages ? "... " : "");
 
-			return resultado;
+			return paginasString.ToString().Trim();
 		}
 
-		private List<int> PaginasLista(int currentPage, int totalPages, int boundaries, int around)
+		private List<int> ObterListaPaginas(int currentPage, int totalPages, int boundaries, int around)
 		{
 			var paginas = new List<int>();
 			//Adicionar a currentpage
@@ -89,10 +79,10 @@ namespace PaginacaoNetStandard
 			//Adicionar os valores around depois da currentPage
 			paginas.AddRange(Enumerable.Range(currentPage + 1, around));
 
-			//Ordenar e remover os valores iguais e selecionar apenas aqueles que ficam dentro dos valores que queremos na nossa lista
+			//Ordenar e selecionar apenas os valores que queremos na nossa lista
 			paginas = paginas.OrderBy(item => item)
-				.Distinct()
-				.Where(item => item <= totalPages && item > 0)
+				.Distinct()//Ter a certeza que não repito valores na lista
+				.Where(item => item <= totalPages && item > 0)//apenas aqueles entre 1 e totalpages
 				.ToList();
 
 			return paginas;
