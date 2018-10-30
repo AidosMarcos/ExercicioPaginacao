@@ -87,15 +87,22 @@ namespace PaginacaoNetStandard
 				var paginasString = new StringBuilder();
 
 				//verificar se o primeiro item na lista de paginas é maior que 1, sim for adicionar ...
-				paginasString.Append(paginas[0] > 1 ? "... " : "");
+				paginasString.Append(paginas.First() > 1 ? "... " : "");
 
-				paginasString.Append(string.Concat(paginas.Select((item, index) =>
-											index == 0 ? // se estiver na primeira pagina..
-												$"{item} " :// entao adicionar o item
-												item - paginas[index - 1] > 1 ? // se a diferença entre a pagina atual e a anterior maior que 1
-													$"... {item} " : // adiciona ...
-													$"{item} ") // se nao apenas adiciona o item
-													));
+				var paginaAnterior = paginas.First();
+
+				foreach (var pagina in paginas) //
+				{   // caso a diferença entre a pagina actual e anterior for maior que 1
+					if (pagina - paginaAnterior > 1) 
+					{
+						paginasString.Append($"... {pagina} "); // adicionar ... porque exite uma "gap"
+					}
+					else
+					{
+						paginasString.Append($"{pagina} "); // se não apenas adicionar a pagina
+					}
+					paginaAnterior = pagina;
+				}
 
 				//verificar se ultimo item de paginas é menos que totalPages, se for adicionar ...
 				paginasString.Append(paginas.Last() < totalPages ? "... " : "");

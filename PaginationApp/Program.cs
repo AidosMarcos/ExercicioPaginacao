@@ -13,7 +13,7 @@ namespace PaginationApp
         static void Main()
         {
 			var paginacao = new PaginacaoStandard();
-			Console.WriteLine(paginacao.Paginar(10, 20, 2, 2)); // Chamada do metodo para testar
+			Console.WriteLine(paginacao.Paginar(10, 1000000000, 50,50 )); // Chamada do metodo para testar
         }
     }
 }
