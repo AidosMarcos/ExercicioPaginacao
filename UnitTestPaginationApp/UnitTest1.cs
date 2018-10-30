@@ -232,5 +232,20 @@ namespace UnitTestPaginationApp
 
             Assert.AreEqual(resultadoEsperado, metodo);
         }
+
+        [TestMethod]
+        public void TestMethodValoresGrandes()
+        {
+            int currentPage = 10000;
+            int totalPages = int.MaxValue;
+            int boundaries = int.MaxValue;
+            int around = int.MaxValue;
+
+            var metodo = (new PaginacaoStandard()).Paginar(currentPage, totalPages, boundaries, around);
+
+			var resultadoEsperado = PaginacaoStandard.ResultadoInvalido;
+
+            Assert.AreEqual(resultadoEsperado, metodo);
+        }
     }
 }
